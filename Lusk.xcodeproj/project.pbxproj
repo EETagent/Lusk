@@ -1,0 +1,915 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		460EE03628B37ADB00F2EDA1 /* StatusCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 460EE03528B37ADB00F2EDA1 /* StatusCellView.m */; };
+		460EE03B28B388BB00F2EDA1 /* Downloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 460EE03A28B388BB00F2EDA1 /* Downloader.m */; };
+		4638F44E28A2574E00121DD1 /* URLTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4638F44D28A2574E00121DD1 /* URLTextField.m */; };
+		4659344028B156BC00EE4A0B /* CaptchaCodeTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4659343F28B156BC00EE4A0B /* CaptchaCodeTextField.m */; };
+		4659344328B220D200EE4A0B /* Part.m in Sources */ = {isa = PBXBuildFile; fileRef = 4659344228B220D200EE4A0B /* Part.m */; };
+		4670C7F728A140E60069EC2E /* UloztoFilePreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4670C7F628A140E60069EC2E /* UloztoFilePreviewView.m */; };
+		468815F128A4FAFF0099C656 /* CaptchaAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 468815F028A4FAFF0099C656 /* CaptchaAlert.m */; };
+		46AACDAA28A3BECB005072D8 /* CaptchaCracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 46AACDA928A3BECB005072D8 /* CaptchaCracker.m */; };
+		46AACDB028A3C294005072D8 /* Page.m in Sources */ = {isa = PBXBuildFile; fileRef = 46AACDAF28A3C294005072D8 /* Page.m */; };
+		46D4CDD7289FDE7900042395 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 46D4CDD6289FDE7900042395 /* AppDelegate.m */; };
+		46D4CDDA289FDE7900042395 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46D4CDD9289FDE7900042395 /* ViewController.m */; };
+		46D4CDDC289FDE7A00042395 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46D4CDDB289FDE7A00042395 /* Assets.xcassets */; };
+		46D4CDDF289FDE7A00042395 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46D4CDDD289FDE7A00042395 /* Main.storyboard */; };
+		46D4CDE1289FDE7A00042395 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 46D4CDE0289FDE7A00042395 /* main.m */; };
+		46D4CDEC289FDE7A00042395 /* LuskTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 46D4CDEB289FDE7A00042395 /* LuskTests.m */; };
+		46D4CDF6289FDE7A00042395 /* LuskUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 46D4CDF5289FDE7A00042395 /* LuskUITests.m */; };
+		46D4CDF8289FDE7A00042395 /* LuskUITestsLaunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 46D4CDF7289FDE7A00042395 /* LuskUITestsLaunchTests.m */; };
+		46D4CE07289FE92C00042395 /* ProgressCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 46D4CE06289FE92C00042395 /* ProgressCellView.m */; };
+		46E3E95E28A43E6500A9FF0D /* NumberTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 46E3E95D28A43E6500A9FF0D /* NumberTextField.m */; };
+		46E3E96128A459BE00A9FF0D /* UloztoCaptchaBreaker.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 46E3E96028A459BE00A9FF0D /* UloztoCaptchaBreaker.mlpackage */; };
+		46EAE4D528AAAB87004D7884 /* SpeedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 46EAE4D428AAAB87004D7884 /* SpeedView.m */; };
+		8AFBFA42C570DF4C82681CD7 /* Pods_Lusk_LuskUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8B54F7679A6EEC7F5742C57 /* Pods_Lusk_LuskUITests.framework */; };
+		E474C2B2DD6772BEE48756FD /* Pods_Lusk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B19BD24282DA759AD1F186C /* Pods_Lusk.framework */; };
+		F6B0F97E52FD35E3D0474FB3 /* Pods_LuskTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64FC9D87CD936CBAD626CF43 /* Pods_LuskTests.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		46D4CDE8289FDE7A00042395 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 46D4CDCA289FDE7800042395 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 46D4CDD1289FDE7800042395;
+			remoteInfo = Dzem;
+		};
+		46D4CDF2289FDE7A00042395 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 46D4CDCA289FDE7800042395 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 46D4CDD1289FDE7800042395;
+			remoteInfo = Dzem;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1B61BD35C0BB0F8E5D5DB33D /* Pods-LuskTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LuskTests.release.xcconfig"; path = "Target Support Files/Pods-LuskTests/Pods-LuskTests.release.xcconfig"; sourceTree = "<group>"; };
+		40A33BDCEEBC367E5D34F27A /* Pods-Dzem-DzemUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dzem-DzemUITests.release.xcconfig"; path = "Target Support Files/Pods-Dzem-DzemUITests/Pods-Dzem-DzemUITests.release.xcconfig"; sourceTree = "<group>"; };
+		460EE03428B37ADB00F2EDA1 /* StatusCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = StatusCellView.h; sourceTree = "<group>"; };
+		460EE03528B37ADB00F2EDA1 /* StatusCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = StatusCellView.m; sourceTree = "<group>"; };
+		460EE03828B3848700F2EDA1 /* UloztoResolutionStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = UloztoResolutionStatus.h; sourceTree = "<group>"; };
+		460EE03928B388BB00F2EDA1 /* Downloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = Downloader.h; sourceTree = "<group>"; };
+		460EE03A28B388BB00F2EDA1 /* Downloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = Downloader.m; sourceTree = "<group>"; };
+		4638F44C28A2574E00121DD1 /* URLTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = URLTextField.h; sourceTree = "<group>"; };
+		4638F44D28A2574E00121DD1 /* URLTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = URLTextField.m; sourceTree = "<group>"; };
+		4659343E28B156BC00EE4A0B /* CaptchaCodeTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = CaptchaCodeTextField.h; sourceTree = "<group>"; };
+		4659343F28B156BC00EE4A0B /* CaptchaCodeTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = CaptchaCodeTextField.m; sourceTree = "<group>"; };
+		4659344128B220D200EE4A0B /* Part.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = Part.h; sourceTree = "<group>"; };
+		4659344228B220D200EE4A0B /* Part.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = Part.m; sourceTree = "<group>"; };
+		4659344728B24C2300EE4A0B /* PageDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = PageDelegate.h; sourceTree = "<group>"; };
+		465B9AC228B538AD00C336FB /* DownloaderDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DownloaderDelegate.h; sourceTree = "<group>"; };
+		4670C7F528A140E60069EC2E /* UloztoFilePreviewView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = UloztoFilePreviewView.h; sourceTree = "<group>"; };
+		4670C7F628A140E60069EC2E /* UloztoFilePreviewView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = UloztoFilePreviewView.m; sourceTree = "<group>"; };
+		468815EF28A4FAFF0099C656 /* CaptchaAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = CaptchaAlert.h; sourceTree = "<group>"; };
+		468815F028A4FAFF0099C656 /* CaptchaAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = CaptchaAlert.m; sourceTree = "<group>"; };
+		46AACDA828A3BECB005072D8 /* CaptchaCracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = CaptchaCracker.h; sourceTree = "<group>"; };
+		46AACDA928A3BECB005072D8 /* CaptchaCracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = CaptchaCracker.m; sourceTree = "<group>"; };
+		46AACDAE28A3C294005072D8 /* Page.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = Page.h; sourceTree = "<group>"; };
+		46AACDAF28A3C294005072D8 /* Page.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = Page.m; sourceTree = "<group>"; };
+		46BFA1B728B69D3F00EF41A0 /* Lusk.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Lusk.entitlements; sourceTree = "<group>"; };
+		46D4CDD2289FDE7900042395 /* Lusk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lusk.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		46D4CDD5289FDE7900042395 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = AppDelegate.h; sourceTree = "<group>"; };
+		46D4CDD6289FDE7900042395 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AppDelegate.m; sourceTree = "<group>"; };
+		46D4CDD8289FDE7900042395 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = ViewController.h; sourceTree = "<group>"; };
+		46D4CDD9289FDE7900042395 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ViewController.m; sourceTree = "<group>"; };
+		46D4CDDB289FDE7A00042395 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		46D4CDDE289FDE7A00042395 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		46D4CDE0289FDE7A00042395 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = main.m; sourceTree = "<group>"; };
+		46D4CDE7289FDE7A00042395 /* LuskTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LuskTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		46D4CDEB289FDE7A00042395 /* LuskTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = LuskTests.m; sourceTree = "<group>"; };
+		46D4CDF1289FDE7A00042395 /* LuskUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LuskUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		46D4CDF5289FDE7A00042395 /* LuskUITests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = LuskUITests.m; sourceTree = "<group>"; };
+		46D4CDF7289FDE7A00042395 /* LuskUITestsLaunchTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = LuskUITestsLaunchTests.m; sourceTree = "<group>"; };
+		46D4CE05289FE92C00042395 /* ProgressCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = ProgressCellView.h; sourceTree = "<group>"; };
+		46D4CE06289FE92C00042395 /* ProgressCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ProgressCellView.m; sourceTree = "<group>"; };
+		46E3E95C28A43E6500A9FF0D /* NumberTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = NumberTextField.h; sourceTree = "<group>"; };
+		46E3E95D28A43E6500A9FF0D /* NumberTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = NumberTextField.m; sourceTree = "<group>"; };
+		46E3E96028A459BE00A9FF0D /* UloztoCaptchaBreaker.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = UloztoCaptchaBreaker.mlpackage; sourceTree = "<group>"; };
+		46EAE4D328AAAB87004D7884 /* SpeedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = SpeedView.h; sourceTree = "<group>"; };
+		46EAE4D428AAAB87004D7884 /* SpeedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SpeedView.m; sourceTree = "<group>"; };
+		64FC9D87CD936CBAD626CF43 /* Pods_LuskTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LuskTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7571AA582E4C52122A56BF21 /* Pods-DzemTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DzemTests.debug.xcconfig"; path = "Target Support Files/Pods-DzemTests/Pods-DzemTests.debug.xcconfig"; sourceTree = "<group>"; };
+		882EECC24F94388059B74A1D /* Pods-Dzem.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dzem.release.xcconfig"; path = "Target Support Files/Pods-Dzem/Pods-Dzem.release.xcconfig"; sourceTree = "<group>"; };
+		9383D17983AB2BB015AB3DF6 /* Pods-Dzem-DzemUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dzem-DzemUITests.debug.xcconfig"; path = "Target Support Files/Pods-Dzem-DzemUITests/Pods-Dzem-DzemUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		9B19BD24282DA759AD1F186C /* Pods_Lusk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lusk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9B74D2DEBAC612CEBD5F949F /* Pods-Lusk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lusk.debug.xcconfig"; path = "Target Support Files/Pods-Lusk/Pods-Lusk.debug.xcconfig"; sourceTree = "<group>"; };
+		A54CB47F7F4440C9A95A4548 /* Pods-LuskTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LuskTests.debug.xcconfig"; path = "Target Support Files/Pods-LuskTests/Pods-LuskTests.debug.xcconfig"; sourceTree = "<group>"; };
+		BC581E255839ABB4AF409A35 /* Pods-Dzem.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dzem.debug.xcconfig"; path = "Target Support Files/Pods-Dzem/Pods-Dzem.debug.xcconfig"; sourceTree = "<group>"; };
+		D50689BE571AC16024A20C60 /* Pods-DzemTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DzemTests.release.xcconfig"; path = "Target Support Files/Pods-DzemTests/Pods-DzemTests.release.xcconfig"; sourceTree = "<group>"; };
+		DE1F0A244A48E757BBF453EE /* Pods-Lusk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lusk.release.xcconfig"; path = "Target Support Files/Pods-Lusk/Pods-Lusk.release.xcconfig"; sourceTree = "<group>"; };
+		E8B54F7679A6EEC7F5742C57 /* Pods_Lusk_LuskUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lusk_LuskUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC6990357DE6E33EB8D8527A /* Pods-Lusk-LuskUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lusk-LuskUITests.release.xcconfig"; path = "Target Support Files/Pods-Lusk-LuskUITests/Pods-Lusk-LuskUITests.release.xcconfig"; sourceTree = "<group>"; };
+		FD3A69D7FD11070CCE42CA11 /* Pods-Lusk-LuskUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lusk-LuskUITests.debug.xcconfig"; path = "Target Support Files/Pods-Lusk-LuskUITests/Pods-Lusk-LuskUITests.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		46D4CDCF289FDE7800042395 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E474C2B2DD6772BEE48756FD /* Pods_Lusk.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		46D4CDE4289FDE7A00042395 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F6B0F97E52FD35E3D0474FB3 /* Pods_LuskTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		46D4CDEE289FDE7A00042395 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8AFBFA42C570DF4C82681CD7 /* Pods_Lusk_LuskUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		192400F9EC4326B9958792A3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BC581E255839ABB4AF409A35 /* Pods-Dzem.debug.xcconfig */,
+				882EECC24F94388059B74A1D /* Pods-Dzem.release.xcconfig */,
+				9383D17983AB2BB015AB3DF6 /* Pods-Dzem-DzemUITests.debug.xcconfig */,
+				40A33BDCEEBC367E5D34F27A /* Pods-Dzem-DzemUITests.release.xcconfig */,
+				7571AA582E4C52122A56BF21 /* Pods-DzemTests.debug.xcconfig */,
+				D50689BE571AC16024A20C60 /* Pods-DzemTests.release.xcconfig */,
+				9B74D2DEBAC612CEBD5F949F /* Pods-Lusk.debug.xcconfig */,
+				DE1F0A244A48E757BBF453EE /* Pods-Lusk.release.xcconfig */,
+				FD3A69D7FD11070CCE42CA11 /* Pods-Lusk-LuskUITests.debug.xcconfig */,
+				FC6990357DE6E33EB8D8527A /* Pods-Lusk-LuskUITests.release.xcconfig */,
+				A54CB47F7F4440C9A95A4548 /* Pods-LuskTests.debug.xcconfig */,
+				1B61BD35C0BB0F8E5D5DB33D /* Pods-LuskTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		460EE03728B3846700F2EDA1 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				460EE03828B3848700F2EDA1 /* UloztoResolutionStatus.h */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		4659344428B2436100EE4A0B /* Table */ = {
+			isa = PBXGroup;
+			children = (
+				4659344528B2436B00EE4A0B /* Cell */,
+			);
+			path = Table;
+			sourceTree = "<group>";
+		};
+		4659344528B2436B00EE4A0B /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				46D4CE05289FE92C00042395 /* ProgressCellView.h */,
+				46D4CE06289FE92C00042395 /* ProgressCellView.m */,
+				460EE03428B37ADB00F2EDA1 /* StatusCellView.h */,
+				460EE03528B37ADB00F2EDA1 /* StatusCellView.m */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		4659344628B24C0700EE4A0B /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				4659344728B24C2300EE4A0B /* PageDelegate.h */,
+				465B9AC228B538AD00C336FB /* DownloaderDelegate.h */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		468815EE28A4FAE70099C656 /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				468815EF28A4FAFF0099C656 /* CaptchaAlert.h */,
+				468815F028A4FAFF0099C656 /* CaptchaAlert.m */,
+			);
+			path = Alert;
+			sourceTree = "<group>";
+		};
+		46AACDA728A3BE4E005072D8 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				46AACDA828A3BECB005072D8 /* CaptchaCracker.h */,
+				46AACDA928A3BECB005072D8 /* CaptchaCracker.m */,
+				46AACDAE28A3C294005072D8 /* Page.h */,
+				46AACDAF28A3C294005072D8 /* Page.m */,
+				4659344128B220D200EE4A0B /* Part.h */,
+				4659344228B220D200EE4A0B /* Part.m */,
+				460EE03928B388BB00F2EDA1 /* Downloader.h */,
+				460EE03A28B388BB00F2EDA1 /* Downloader.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		46D4CDC9289FDE7800042395 = {
+			isa = PBXGroup;
+			children = (
+				46D4CDD4289FDE7900042395 /* Lusk */,
+				46D4CDEA289FDE7A00042395 /* LuskTests */,
+				46D4CDF4289FDE7A00042395 /* LuskUITests */,
+				46D4CDD3289FDE7900042395 /* Products */,
+				192400F9EC4326B9958792A3 /* Pods */,
+				C90A760AABD217EB9080D6D4 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		46D4CDD3289FDE7900042395 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				46D4CDD2289FDE7900042395 /* Lusk.app */,
+				46D4CDE7289FDE7A00042395 /* LuskTests.xctest */,
+				46D4CDF1289FDE7A00042395 /* LuskUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		46D4CDD4289FDE7900042395 /* Lusk */ = {
+			isa = PBXGroup;
+			children = (
+				46E3E96028A459BE00A9FF0D /* UloztoCaptchaBreaker.mlpackage */,
+				460EE03728B3846700F2EDA1 /* Enums */,
+				4659344628B24C0700EE4A0B /* Protocols */,
+				46AACDA728A3BE4E005072D8 /* Classes */,
+				46D4CE0828A000A900042395 /* Controllers */,
+				46D4CE04289FE86500042395 /* Views */,
+				46D4CDD5289FDE7900042395 /* AppDelegate.h */,
+				46D4CDD6289FDE7900042395 /* AppDelegate.m */,
+				46D4CDDB289FDE7A00042395 /* Assets.xcassets */,
+				46D4CDDD289FDE7A00042395 /* Main.storyboard */,
+				46D4CDE0289FDE7A00042395 /* main.m */,
+				46BFA1B728B69D3F00EF41A0 /* Lusk.entitlements */,
+			);
+			path = Lusk;
+			sourceTree = "<group>";
+		};
+		46D4CDEA289FDE7A00042395 /* LuskTests */ = {
+			isa = PBXGroup;
+			children = (
+				46D4CDEB289FDE7A00042395 /* LuskTests.m */,
+			);
+			path = LuskTests;
+			sourceTree = "<group>";
+		};
+		46D4CDF4289FDE7A00042395 /* LuskUITests */ = {
+			isa = PBXGroup;
+			children = (
+				46D4CDF5289FDE7A00042395 /* LuskUITests.m */,
+				46D4CDF7289FDE7A00042395 /* LuskUITestsLaunchTests.m */,
+			);
+			path = LuskUITests;
+			sourceTree = "<group>";
+		};
+		46D4CE04289FE86500042395 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4659344428B2436100EE4A0B /* Table */,
+				46EAE4D628AB6D3C004D7884 /* UloztoFilePreview */,
+				468815EE28A4FAE70099C656 /* Alert */,
+				46E3E95F28A441B300A9FF0D /* TextField */,
+				46EAE4D328AAAB87004D7884 /* SpeedView.h */,
+				46EAE4D428AAAB87004D7884 /* SpeedView.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		46D4CE0828A000A900042395 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				46D4CDD9289FDE7900042395 /* ViewController.m */,
+				46D4CDD8289FDE7900042395 /* ViewController.h */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		46E3E95F28A441B300A9FF0D /* TextField */ = {
+			isa = PBXGroup;
+			children = (
+				4638F44C28A2574E00121DD1 /* URLTextField.h */,
+				4638F44D28A2574E00121DD1 /* URLTextField.m */,
+				46E3E95C28A43E6500A9FF0D /* NumberTextField.h */,
+				46E3E95D28A43E6500A9FF0D /* NumberTextField.m */,
+				4659343E28B156BC00EE4A0B /* CaptchaCodeTextField.h */,
+				4659343F28B156BC00EE4A0B /* CaptchaCodeTextField.m */,
+			);
+			path = TextField;
+			sourceTree = "<group>";
+		};
+		46EAE4D628AB6D3C004D7884 /* UloztoFilePreview */ = {
+			isa = PBXGroup;
+			children = (
+				4670C7F528A140E60069EC2E /* UloztoFilePreviewView.h */,
+				4670C7F628A140E60069EC2E /* UloztoFilePreviewView.m */,
+			);
+			path = UloztoFilePreview;
+			sourceTree = "<group>";
+		};
+		C90A760AABD217EB9080D6D4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9B19BD24282DA759AD1F186C /* Pods_Lusk.framework */,
+				E8B54F7679A6EEC7F5742C57 /* Pods_Lusk_LuskUITests.framework */,
+				64FC9D87CD936CBAD626CF43 /* Pods_LuskTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		46D4CDD1289FDE7800042395 /* Lusk */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 46D4CDFB289FDE7A00042395 /* Build configuration list for PBXNativeTarget "Lusk" */;
+			buildPhases = (
+				1FB7E7359CF94D80EAE0DC4A /* [CP] Check Pods Manifest.lock */,
+				46D4CDCE289FDE7800042395 /* Sources */,
+				46D4CDCF289FDE7800042395 /* Frameworks */,
+				46D4CDD0289FDE7800042395 /* Resources */,
+				7C55AF15B8D1018A245AAC42 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Lusk;
+			productName = Dzem;
+			productReference = 46D4CDD2289FDE7900042395 /* Lusk.app */;
+			productType = "com.apple.product-type.application";
+		};
+		46D4CDE6289FDE7A00042395 /* LuskTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 46D4CDFE289FDE7A00042395 /* Build configuration list for PBXNativeTarget "LuskTests" */;
+			buildPhases = (
+				E364B3185DC1D68D14FA4B87 /* [CP] Check Pods Manifest.lock */,
+				46D4CDE3289FDE7A00042395 /* Sources */,
+				46D4CDE4289FDE7A00042395 /* Frameworks */,
+				46D4CDE5289FDE7A00042395 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				46D4CDE9289FDE7A00042395 /* PBXTargetDependency */,
+			);
+			name = LuskTests;
+			productName = DzemTests;
+			productReference = 46D4CDE7289FDE7A00042395 /* LuskTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		46D4CDF0289FDE7A00042395 /* LuskUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 46D4CE01289FDE7A00042395 /* Build configuration list for PBXNativeTarget "LuskUITests" */;
+			buildPhases = (
+				6CAD405524F55A6F7C77F2AD /* [CP] Check Pods Manifest.lock */,
+				46D4CDED289FDE7A00042395 /* Sources */,
+				46D4CDEE289FDE7A00042395 /* Frameworks */,
+				46D4CDEF289FDE7A00042395 /* Resources */,
+				D202BACE083652CAEB97A71B /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				46D4CDF3289FDE7A00042395 /* PBXTargetDependency */,
+			);
+			name = LuskUITests;
+			productName = DzemUITests;
+			productReference = 46D4CDF1289FDE7A00042395 /* LuskUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		46D4CDCA289FDE7800042395 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 1400;
+				TargetAttributes = {
+					46D4CDD1289FDE7800042395 = {
+						CreatedOnToolsVersion = 14.0;
+					};
+					46D4CDE6289FDE7A00042395 = {
+						CreatedOnToolsVersion = 14.0;
+						TestTargetID = 46D4CDD1289FDE7800042395;
+					};
+					46D4CDF0289FDE7A00042395 = {
+						CreatedOnToolsVersion = 14.0;
+						TestTargetID = 46D4CDD1289FDE7800042395;
+					};
+				};
+			};
+			buildConfigurationList = 46D4CDCD289FDE7800042395 /* Build configuration list for PBXProject "Lusk" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 46D4CDC9289FDE7800042395;
+			productRefGroup = 46D4CDD3289FDE7900042395 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				46D4CDD1289FDE7800042395 /* Lusk */,
+				46D4CDE6289FDE7A00042395 /* LuskTests */,
+				46D4CDF0289FDE7A00042395 /* LuskUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		46D4CDD0289FDE7800042395 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				46D4CDDC289FDE7A00042395 /* Assets.xcassets in Resources */,
+				46D4CDDF289FDE7A00042395 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		46D4CDE5289FDE7A00042395 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		46D4CDEF289FDE7A00042395 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1FB7E7359CF94D80EAE0DC4A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Lusk-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6CAD405524F55A6F7C77F2AD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Lusk-LuskUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7C55AF15B8D1018A245AAC42 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Lusk/Pods-Lusk-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Lusk/Pods-Lusk-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Lusk/Pods-Lusk-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D202BACE083652CAEB97A71B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Lusk-LuskUITests/Pods-Lusk-LuskUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Lusk-LuskUITests/Pods-Lusk-LuskUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Lusk-LuskUITests/Pods-Lusk-LuskUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E364B3185DC1D68D14FA4B87 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LuskTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		46D4CDCE289FDE7800042395 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				46D4CDDA289FDE7900042395 /* ViewController.m in Sources */,
+				4638F44E28A2574E00121DD1 /* URLTextField.m in Sources */,
+				46D4CDE1289FDE7A00042395 /* main.m in Sources */,
+				46E3E95E28A43E6500A9FF0D /* NumberTextField.m in Sources */,
+				46AACDB028A3C294005072D8 /* Page.m in Sources */,
+				46D4CE07289FE92C00042395 /* ProgressCellView.m in Sources */,
+				460EE03B28B388BB00F2EDA1 /* Downloader.m in Sources */,
+				46EAE4D528AAAB87004D7884 /* SpeedView.m in Sources */,
+				468815F128A4FAFF0099C656 /* CaptchaAlert.m in Sources */,
+				4659344328B220D200EE4A0B /* Part.m in Sources */,
+				46E3E96128A459BE00A9FF0D /* UloztoCaptchaBreaker.mlpackage in Sources */,
+				46AACDAA28A3BECB005072D8 /* CaptchaCracker.m in Sources */,
+				460EE03628B37ADB00F2EDA1 /* StatusCellView.m in Sources */,
+				4659344028B156BC00EE4A0B /* CaptchaCodeTextField.m in Sources */,
+				4670C7F728A140E60069EC2E /* UloztoFilePreviewView.m in Sources */,
+				46D4CDD7289FDE7900042395 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		46D4CDE3289FDE7A00042395 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				46D4CDEC289FDE7A00042395 /* LuskTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		46D4CDED289FDE7A00042395 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				46D4CDF8289FDE7A00042395 /* LuskUITestsLaunchTests.m in Sources */,
+				46D4CDF6289FDE7A00042395 /* LuskUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		46D4CDE9289FDE7A00042395 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 46D4CDD1289FDE7800042395 /* Lusk */;
+			targetProxy = 46D4CDE8289FDE7A00042395 /* PBXContainerItemProxy */;
+		};
+		46D4CDF3289FDE7A00042395 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 46D4CDD1289FDE7800042395 /* Lusk */;
+			targetProxy = 46D4CDF2289FDE7A00042395 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		46D4CDDD289FDE7A00042395 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				46D4CDDE289FDE7A00042395 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		46D4CDF9289FDE7A00042395 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		46D4CDFA289FDE7A00042395 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		46D4CDFC289FDE7A00042395 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9B74D2DEBAC612CEBD5F949F /* Pods-Lusk.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Lusk/Lusk.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = KSR6A94B7P;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Lusk!";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.EETagent.Lusk;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+			};
+			name = Debug;
+		};
+		46D4CDFD289FDE7A00042395 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DE1F0A244A48E757BBF453EE /* Pods-Lusk.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Lusk/Lusk.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = KSR6A94B7P;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Lusk!";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.EETagent.Lusk;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+			};
+			name = Release;
+		};
+		46D4CDFF289FDE7A00042395 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A54CB47F7F4440C9A95A4548 /* Pods-LuskTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = KSR6A94B7P;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.EETagent.LuskTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Lusk.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Lusk";
+			};
+			name = Debug;
+		};
+		46D4CE00289FDE7A00042395 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1B61BD35C0BB0F8E5D5DB33D /* Pods-LuskTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = KSR6A94B7P;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.EETagent.LuskTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Lusk.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Lusk";
+			};
+			name = Release;
+		};
+		46D4CE02289FDE7A00042395 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FD3A69D7FD11070CCE42CA11 /* Pods-Lusk-LuskUITests.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = KSR6A94B7P;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.EETagent.LuskUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TEST_TARGET_NAME = Lusk;
+			};
+			name = Debug;
+		};
+		46D4CE03289FDE7A00042395 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FC6990357DE6E33EB8D8527A /* Pods-Lusk-LuskUITests.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = KSR6A94B7P;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.EETagent.LuskUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TEST_TARGET_NAME = Lusk;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		46D4CDCD289FDE7800042395 /* Build configuration list for PBXProject "Lusk" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				46D4CDF9289FDE7A00042395 /* Debug */,
+				46D4CDFA289FDE7A00042395 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		46D4CDFB289FDE7A00042395 /* Build configuration list for PBXNativeTarget "Lusk" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				46D4CDFC289FDE7A00042395 /* Debug */,
+				46D4CDFD289FDE7A00042395 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		46D4CDFE289FDE7A00042395 /* Build configuration list for PBXNativeTarget "LuskTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				46D4CDFF289FDE7A00042395 /* Debug */,
+				46D4CE00289FDE7A00042395 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		46D4CE01289FDE7A00042395 /* Build configuration list for PBXNativeTarget "LuskUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				46D4CE02289FDE7A00042395 /* Debug */,
+				46D4CE03289FDE7A00042395 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 46D4CDCA289FDE7800042395 /* Project object */;
+}

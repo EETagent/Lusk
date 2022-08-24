@@ -1,0 +1,6 @@
+{
+  "MLModelVersionStringKey" : "1.0",
+  "MLModelDescriptionKey" : "Deep learning model using Tensorflow and CoreML that breaks ulozto captcha codes.",
+  "MLModelAuthorKey" : "JanPalasek (Tensorflow)",
+  "MLModelLicenseKey" : "MIT"
+}

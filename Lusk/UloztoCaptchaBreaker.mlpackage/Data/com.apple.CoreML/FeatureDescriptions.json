@@ -1,0 +1,15 @@
+{
+  "Outputs" : {
+    "code" : {
+      "MLFeatureShortDescription" : "--"
+    }
+  },
+  "Inputs" : {
+    "captcha" : {
+      "MLFeatureShortDescription" : "Grayscale 175 x 70 captcha image"
+    }
+  },
+  "TrainingInputs" : {
+
+  }
+}

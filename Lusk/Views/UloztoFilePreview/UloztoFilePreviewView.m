@@ -20,6 +20,8 @@
         //Background color
         //#333333
         [self setWantsLayer:YES];
+        [[self layer] setCornerCurve:kCACornerCurveContinuous];
+        [[self layer] setCornerRadius:6];
         [[self layer] setBackgroundColor:[[NSColor colorWithSRGBRed:0.2 green:0.2 blue:0.2 alpha:1] CGColor]];
     }
     return self;

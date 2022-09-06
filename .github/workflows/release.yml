@@ -1,0 +1,86 @@
+name: Release Lusk! 🤌
+
+on:
+  push:
+    tags:
+      - "*"
+
+env:
+  MACOS_APP_NAME: "Lusk"
+  MACOS_APP_ARTIFACT: "Lusk.app"
+  MACOS_DMG_ARTIFACT: "Lusk.dmg"
+  MACOS_ZIP_ARTIFACT: "Lusk.zip"
+  XCBUILD_PATH: "build/Build/Products/Release"
+
+jobs:
+  ReleaseCI:
+    runs-on: macos-12
+
+    steps:
+    - name: Checkout 🚚
+      uses: actions/checkout@v3
+
+    - name: Install Dependencies 🚀
+      run: brew install create-dmg
+      env:
+        HOMEBREW_NO_INSTALL_CLEANUP: 1
+        HOMEBREW_NO_AUTO_UPDATE: 1
+
+    - name: Setup latest Xcode ⚒️
+      uses: maxim-lobanov/setup-xcode@v1
+      with:
+        xcode-version: latest
+
+    - name: Prepare Env 🚀
+      run: |
+        pod install
+
+    - name: Import Certificates 📜
+      uses: apple-actions/import-codesign-certs@v1
+      with:
+        p12-file-base64: ${{ secrets.CERTIFICATES_P12 }}
+        p12-password: ${{ secrets.CERTIFICATES_P12_PASSWORD }}
+        
+    - name: Release Build 🔨
+      run: |
+        xcodebuild -scheme ${MACOS_APP_NAME} -configuration Release -derivedDataPath build -disableAutomaticPackageResolution CODE_SIGN_IDENTITY=- | xcpretty && exit ${PIPESTATUS[0]}
+
+    - name: Check Send signature
+      run: codesign --verify -vvvv --deep --strict "${XCBUILD_PATH}/${MACOS_APP_ARTIFACT}"
+
+    - name: Create Disk Image 💿
+      run: |
+        cp ./dmg/dmg-background.tiff $XCBUILD_PATH
+        cp ./dmg/VolumeIcon.icns $XCBUILD_PATH
+        cd $XCBUILD_PATH
+        create-dmg \
+          --volname ${MACOS_APP_NAME} \
+          --volicon "VolumeIcon.icns" \
+          --background "dmg-background.tiff" \
+          --window-pos 200 120 \
+          --window-size 660 420 \
+          --text-size 12 \
+          --icon-size 160 \
+          --icon ${MACOS_APP_ARTIFACT} 180 170 \
+          --hide-extension ${MACOS_APP_ARTIFACT} \
+          --app-drop-link 480 170 \
+          ${MACOS_DMG_ARTIFACT} \
+          ${MACOS_APP_ARTIFACT}
+        cd -
+        mkdir Artifacts
+        cp -R ${XCBUILD_PATH}/*.dmg Artifacts
+        cd $XCBUILD_PATH
+        zip -r ${MACOS_ZIP_ARTIFACT} ${MACOS_APP_ARTIFACT}
+        cd -
+        cp ${XCBUILD_PATH}/*.zip Artifacts
+
+    - name: Publish GitHub Release 📂
+      uses: ncipollo/release-action@v1
+      with:
+        allowUpdates: true
+        replacesArtifacts: true
+        draft: true
+        prerelease: ${{ env.IS_PRE }}
+        artifacts: "./Artifacts/*"
+        tag: ${{ env.REL_TAG }}
+        token: ${{ secrets.GITHUB_TOKEN }}

@@ -3,14 +3,21 @@ name: Build Lusk! 🤌
 on: [push, pull_request]
 
 jobs:
-  test_job:
+  TestCI:
     runs-on: macos-12
     steps:
       - name: Checkout 🚚
         uses: actions/checkout@v3
+
       - name: Prepare Env 🚀
         run: |
           pod install
+
+      - name: Setup latest Xcode ⚒️
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: latest
+
       - name: Debug Build 🔨
         run: xcodebuild -workspace Lusk.xcworkspace -scheme Lusk -destination "platform=macOS" -configuration Debug CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO | xcpretty && exit ${PIPESTATUS[0]}
       #- name: Tests 📖

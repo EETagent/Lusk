@@ -34,6 +34,7 @@ jobs:
     - name: Prepare Env 🚀
       run: |
         pod install
+        brew install automake autoconf libtool gettext
 
     - name: Import Certificates 📜
       uses: apple-actions/import-codesign-certs@v1

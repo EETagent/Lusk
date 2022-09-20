@@ -12,6 +12,7 @@ jobs:
       - name: Prepare Env 🚀
         run: |
           pod install
+          brew install automake autoconf libtool gettext
 
       - name: Setup latest Xcode ⚒️
         uses: maxim-lobanov/setup-xcode@v1

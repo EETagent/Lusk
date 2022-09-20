@@ -1,16 +1,22 @@
 PODS:
   - HTMLKit (4.2.0)
+  - Tor (407.10.1):
+    - Tor/Core (= 407.10.1)
+  - Tor/Core (407.10.1)
 
 DEPENDENCIES:
   - HTMLKit (~> 4.2)
+  - Tor (~> 407.10.1)
 
 SPEC REPOS:
   trunk:
     - HTMLKit
+    - Tor
 
 SPEC CHECKSUMS:
   HTMLKit: e11ec9ed1a9be779e7dd65acdea5757fb113030e
+  Tor: 6b58022ff2a4ce3fe8699153beab10c49b308af1
 
-PODFILE CHECKSUM: 6c35e38135bb35095c00792f419fa0a7cf0201b5
+PODFILE CHECKSUM: f7bc260a8ae252ee056a5a467c46441df69975eb
 
 COCOAPODS: 1.11.3

@@ -180,8 +180,12 @@
                 });
             }
             
-            // Update status => STARTING
-            [part updateWithStatus:STARTING];
+            if (failed && !resetTor)
+                // Update status => BAD CAPCTHA
+                [part updateWithStatus:FORM_ERROR_CONTENT];
+            else
+                // Update status => STARTING
+                [part updateWithStatus:STARTING];
             
             // Slight delay required for Tor.framework
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 2.5 * NSEC_PER_SEC), dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0) , ^{

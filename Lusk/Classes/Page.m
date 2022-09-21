@@ -20,6 +20,7 @@
 @implementation Page {
     BOOL STOP_DOWNLOAD;
     
+    TORController *torController;
     TORConfiguration *torConfiguration;
 }
 
@@ -183,159 +184,152 @@
             [part updateWithStatus:STARTING];
             
             // Slight delay required for Tor.framework
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, !failed ? 2 * NSEC_PER_SEC : 4 * NSEC_PER_SEC), dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0) , ^{
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 2.5 * NSEC_PER_SEC), dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0) , ^{
                 // Update status => TOR_STARTING
                 [part updateWithStatus:TOR_STARTING];
-                            
-                TORController *controller = [[TORController alloc] initWithControlPortFile:[self->torConfiguration controlPortFile]];
-                [controller authenticateWithData:[self->torConfiguration cookie] completion:^(BOOL success, NSError *error) {
-                    __weak TORController *c = controller;
-                    
-                    if (!success) {
+                
+                if (self->torController == nil)
+                    self->torController = [[TORController alloc] initWithControlPortFile:[self->torConfiguration controlPortFile]];
+                
+                __weak TORController *c = self->torController;
+                
+                [c authenticateWithData:[self->torConfiguration cookie] completion:^(BOOL success, NSError *error) {
+                    if (!success || error) {
                         // Update status => TOR_ERROR
                         [part updateWithStatus:TOR_ERROR];
                         return;
                     }
                     
-                    void (^proceed)(void) = ^void() {
-                        [c addObserverForCircuitEstablished:^(BOOL established) {
-                            if (!established) {
-                                return;
-                            }
-
-                            [controller getSessionConfiguration:^(NSURLSessionConfiguration *configuration) {
-                                NSURLSession *torSession = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:nil];
-                                NSMutableURLRequest *requestCaptchaGET = [NSMutableURLRequest new];
+                    [c getSessionConfiguration:^(NSURLSessionConfiguration *configuration) {
+                        if (configuration == nil) {
+                            // TODO: Handle error
+                        }
+                        NSURLSession *torSession = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:nil];
+                        NSMutableURLRequest *requestCaptchaGET = [NSMutableURLRequest new];
+                        
+                        [requestCaptchaGET setHTTPMethod:@"GET"];
+                        [requestCaptchaGET setURL:[self captchaURL]];
+                        
+                        NSURLSessionTask *sessionsTaskCaptchaGET = [torSession dataTaskWithRequest:requestCaptchaGET completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                            
+                            if (data && error == nil) {
+                                NSString *requestCaptchaGETResponse = [[NSString alloc] initWithData:data encoding: NSUTF8StringEncoding];
                                 
-                                [requestCaptchaGET setHTTPMethod:@"GET"];
-                                [requestCaptchaGET setURL:[self captchaURL]];
+                                // Update status => LOADING
+                                [part updateWithStatus:LOADING];
                                 
-                                NSURLSessionTask *sessionsTaskCaptchaGET = [torSession dataTaskWithRequest:requestCaptchaGET completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                HTMLDocument *captchaDocument = [HTMLDocument documentWithString:requestCaptchaGETResponse];
+                                
+                                NSArray<HTMLElement *> *captchaImageElements = [captchaDocument querySelectorAll:@".xapca-image"];
+                                
+                                if ([captchaImageElements count] == 0) {
+                                    [torSession invalidateAndCancel];
+                                    return;
+                                }
+                                
+                                HTMLElement *captchaImageElement = [captchaImageElements objectAtIndex:0];
+                                
+                                NSURL *captchaImageURL = [NSURL URLWithString:[[captchaImageElement attributes] objectForKey:@"src"]];
+                                
+                                NSMutableDictionary<NSString *, NSString *> *captchaData = [NSMutableDictionary new];
+                                for (NSString *name in @[@"_token_", @"timestamp", @"salt", @"hash", @"captcha_type", @"_do"]) {
+                                    NSArray<HTMLElement *> *nameElements = [captchaDocument querySelectorAll:[NSString stringWithFormat:@"[name='%@']", name]];
+                                    if ([nameElements count] > 0) {
+                                        HTMLElement *nameElement = [nameElements objectAtIndex:0];
+                                        NSString *value = [[nameElement attributes] objectForKey:@"value"];
+                                        [captchaData setObject:value forKey:name];
+                                    }
+                                    
+                                }
+                                
+                                NSImage *captchaImage = [[NSImage alloc] initWithContentsOfURL:captchaImageURL];
+                                
+                                CaptchaCracker *breaker = [[CaptchaCracker alloc] initWithCaptcha:captchaImage];
+                                
+                                #ifdef DEBUG
+                                    NSLog(@"%@", captchaImageURL);
+                                #endif
+                                
+                                [part updateWithStatus:CRACKING];
+                                
+                                NSString *captchaCode;
+                                
+                                if ([self coreML])
+                                    captchaCode = [breaker solveCoreML];
+                                else
+                                    captchaCode = [breaker solveManual];
+                                
+                                if ([captchaCode isEqualTo:@"STOP_DOWNLOAD"]) {
+                                    [torSession invalidateAndCancel];
+                                    [self stopDownload];
+                                    return;
+                                }
+                                else if (captchaCode)
+                                    [captchaData setObject:captchaCode forKey:@"captcha_value"];
+                                
+                                #ifdef DEBUG
+                                    NSLog(@"%@", captchaCode);
+                                #endif
+                                
+                                NSMutableURLRequest *requestCaptchaPOST = [NSMutableURLRequest new];
+                                
+                                [requestCaptchaPOST setHTTPMethod:@"POST"];
+                                [requestCaptchaPOST setURL:[self captchaURL]];
+                                [requestCaptchaPOST addValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+                                [requestCaptchaPOST addValue:@"Go-http-client/1.1" forHTTPHeaderField:@"User-Agent"];
+                                
+                                NSMutableString *urlEncodedData = [NSMutableString new];
+                                for (NSString *key in [captchaData keyEnumerator]) {
+                                    NSString *append = [NSString stringWithFormat:@"%@=%@&", key, [captchaData objectForKey:key]];
+                                    [urlEncodedData appendString:append];
+                                }
+                                // Remove last &
+                                [urlEncodedData deleteCharactersInRange:NSMakeRange([urlEncodedData length]-1, 1)];
+                                
+                                [requestCaptchaPOST setHTTPBody:[urlEncodedData dataUsingEncoding:NSUTF8StringEncoding]];
+                                
+                                NSURLSessionTask *sessionsTaskCaptchaPOST = [torSession dataTaskWithRequest:requestCaptchaPOST completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
                                     
                                     if (data && error == nil) {
-                                        NSString *requestCaptchaGETResponse = [[NSString alloc] initWithData:data encoding: NSUTF8StringEncoding];
+                                        NSString *requestCaptchaPOSTResponse = [[NSString alloc] initWithData:data encoding: NSUTF8StringEncoding];
                                         
-                                        // Update status => LOADING
-                                        [part updateWithStatus:LOADING];
+                                        NSLog(@"%@",requestCaptchaPOSTResponse);
                                         
-                                        HTMLDocument *captchaDocument = [HTMLDocument documentWithString:requestCaptchaGETResponse];
+                                        UloztoResolutionStatus validate = [self validateResponse:requestCaptchaPOSTResponse];
                                         
-                                        NSArray<HTMLElement *> *captchaImageElements = [captchaDocument querySelectorAll:@".xapca-image"];
+                                        [part updateWithStatus:validate];
                                         
-                                        if ([captchaImageElements count] == 0) {
-                                            [torSession invalidateAndCancel];
-                                            return;
-                                        }
-                                        
-                                        HTMLElement *captchaImageElement = [captchaImageElements objectAtIndex:0];
-                                        
-                                        NSURL *captchaImageURL = [NSURL URLWithString:[[captchaImageElement attributes] objectForKey:@"src"]];
-                                        
-                                        NSMutableDictionary<NSString *, NSString *> *captchaData = [NSMutableDictionary new];
-                                        for (NSString *name in @[@"_token_", @"timestamp", @"salt", @"hash", @"captcha_type", @"_do"]) {
-                                            NSArray<HTMLElement *> *nameElements = [captchaDocument querySelectorAll:[NSString stringWithFormat:@"[name='%@']", name]];
-                                            if ([nameElements count] > 0) {
-                                                HTMLElement *nameElement = [nameElements objectAtIndex:0];
-                                                NSString *value = [[nameElement attributes] objectForKey:@"value"];
-                                                [captchaData setObject:value forKey:name];
-                                            }
-                                            
-                                        }
-                                        
-                                        NSImage *captchaImage = [[NSImage alloc] initWithContentsOfURL:captchaImageURL];
-                                        
-                                        CaptchaCracker *breaker = [[CaptchaCracker alloc] initWithCaptcha:captchaImage];
-                                        
-                                        #ifdef DEBUG
-                                            NSLog(@"%@", captchaImageURL);
-                                        #endif
-                                        
-                                        [part updateWithStatus:CRACKING];
-                                        
-                                        NSString *captchaCode;
-                                        
-                                        if ([self coreML])
-                                            captchaCode = [breaker solveCoreML];
-                                        else
-                                            captchaCode = [breaker solveManual];
-                                        
-                                        if ([captchaCode isEqualTo:@"STOP_DOWNLOAD"]) {
-                                            [torSession invalidateAndCancel];
-                                            [self stopDownload];
-                                            return;
-                                        }
-                                        else if (captchaCode)
-                                            [captchaData setObject:captchaCode forKey:@"captcha_value"];
-                                        
-                                        #ifdef DEBUG
-                                            NSLog(@"%@", captchaCode);
-                                        #endif
-                                        
-                                        NSMutableURLRequest *requestCaptchaPOST = [NSMutableURLRequest new];
-                                        
-                                        [requestCaptchaPOST setHTTPMethod:@"POST"];
-                                        [requestCaptchaPOST setURL:[self captchaURL]];
-                                        [requestCaptchaPOST addValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-                                        [requestCaptchaPOST addValue:@"Go-http-client/1.1" forHTTPHeaderField:@"User-Agent"];
-                                        
-                                        NSMutableString *urlEncodedData = [NSMutableString new];
-                                        for (NSString *key in [captchaData keyEnumerator]) {
-                                            NSString *append = [NSString stringWithFormat:@"%@=%@&", key, [captchaData objectForKey:key]];
-                                            [urlEncodedData appendString:append];
-                                        }
-                                        // Remove last &
-                                        [urlEncodedData deleteCharactersInRange:NSMakeRange([urlEncodedData length]-1, 1)];
-                                        
-                                        [requestCaptchaPOST setHTTPBody:[urlEncodedData dataUsingEncoding:NSUTF8StringEncoding]];
-                                        
-                                        NSURLSessionTask *sessionsTaskCaptchaPOST = [torSession dataTaskWithRequest:requestCaptchaPOST completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-                                            
-                                            if (data && error == nil) {
-                                                NSString *requestCaptchaPOSTResponse = [[NSString alloc] initWithData:data encoding: NSUTF8StringEncoding];
-                                                
-                                                NSLog(@"%@",requestCaptchaPOSTResponse);
-                                                
-                                                UloztoResolutionStatus validate = [self validateResponse:requestCaptchaPOSTResponse];
-                                                
-                                                [part updateWithStatus:validate];
-                                                
-                                                if (validate == OK) {
-                                                    [self downloadPartWithId:partId+1 resetTor:YES failed:NO];
-                                                    if (![self totalSize]) {
-                                                        /*NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[self slo]]];
-                                                         [request setHTTPMethod:@"HEAD"];*/
-                                                    }
-                                                }
-                                                else if (validate == LIMIT_EXCEEDED)
-                                                    [self downloadPartWithId:partId resetTor:YES failed:YES];
-                                                else if (validate == FORM_ERROR_CONTENT)
-                                                    [self downloadPartWithId:partId resetTor:NO failed:YES];
-                                            }
-                                            
-                                            [torSession invalidateAndCancel];
-                                        }];
-                                        // Start POST request
-                                        [sessionsTaskCaptchaPOST resume];
-                                    } else {
                                         [torSession invalidateAndCancel];
+                                        
+                                        if (validate == OK) {
+                                            [self downloadPartWithId:partId+1 resetTor:YES failed:NO];
+                                            if (![self totalSize]) {
+                                                /*NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[self slo]]];
+                                                 [request setHTTPMethod:@"HEAD"];*/
+                                            }
+                                        }
+                                        else if (validate == LIMIT_EXCEEDED) {
+                                            [c resetConnection:^(BOOL success) {
+                                                [self downloadPartWithId:partId resetTor:YES failed:YES];
+                                                
+                                            }];
+                                            
+                                        }
+                                        else if (validate == FORM_ERROR_CONTENT)
+                                            [self downloadPartWithId:partId resetTor:NO failed:YES];
+                                        
                                     }
+                                    
                                 }];
-                                // Start GET request
-                                [sessionsTaskCaptchaGET resume];
-                            }];
+                                // Start POST request
+                                [sessionsTaskCaptchaPOST resume];
+                            } else {
+                                [torSession invalidateAndCancel];
+                            }
                         }];
-                    };
-                    
-                    if (resetTor) {
-                        // Reset TOR Circuit
-                        [controller resetConnection:^(BOOL success) {
-                            if (!success)
-                                return;
-                            proceed();
-                        }];
-                    } else {
-                        proceed();
-                    }
+                        // Start GET request
+                        [sessionsTaskCaptchaGET resume];
+                    }];
                 }];
             });
         }
@@ -387,6 +381,12 @@
 
 - (void)stopDownload {
     self->STOP_DOWNLOAD = YES;
+    
+    [self->torController disconnect];
+    self->torController = nil;
+    if ([TORThread activeThread]) {
+        [[TORThread activeThread] cancel];
+    }
 }
 
 - (UloztoResolutionStatus)validateResponse:(NSString *)response {

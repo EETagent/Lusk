@@ -50,7 +50,7 @@
     
     NSURL *url = [[self urlTextField] getURL];
     self->page = [Page new];
-    [self->page setupForURL:url withParts:2 withCompletion:^{
+    [self->page setupForURL:url withParts:10 withCompletion:^{
         [self->page setPageDelegate:self];
             
         if ([[self coreMlCheckBox] state] == NSControlStateValueOn)

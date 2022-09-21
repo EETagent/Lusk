@@ -188,7 +188,7 @@
                 // Update status => TOR_STARTING
                 [part updateWithStatus:TOR_STARTING];
                 
-                if (self->torController == nil)
+                if (self->torController == nil && !self->STOP_DOWNLOAD)
                     self->torController = [[TORController alloc] initWithControlPortFile:[self->torConfiguration controlPortFile]];
                 
                 __weak TORController *c = self->torController;
@@ -199,11 +199,20 @@
                         [part updateWithStatus:TOR_ERROR];
                         return;
                     }
+                                      
+                    // BOOl for getSessionConfiguration timeout
+                    __block BOOL finishedAsyncCall = NO;
                     
                     [c getSessionConfiguration:^(NSURLSessionConfiguration *configuration) {
+                        if (finishedAsyncCall)
+                            return;
+                        
+                        finishedAsyncCall = YES;
+                        
                         if (configuration == nil) {
                             // TODO: Handle error
                         }
+                        
                         NSURLSession *torSession = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:nil];
                         NSMutableURLRequest *requestCaptchaGET = [NSMutableURLRequest new];
                         
@@ -311,25 +320,33 @@
                                         else if (validate == LIMIT_EXCEEDED) {
                                             [c resetConnection:^(BOOL success) {
                                                 [self downloadPartWithId:partId resetTor:YES failed:YES];
-                                                
                                             }];
-                                            
                                         }
                                         else if (validate == FORM_ERROR_CONTENT)
                                             [self downloadPartWithId:partId resetTor:NO failed:YES];
-                                        
                                     }
-                                    
                                 }];
                                 // Start POST request
-                                [sessionsTaskCaptchaPOST resume];
+                                if (!self->STOP_DOWNLOAD)
+                                    [sessionsTaskCaptchaPOST resume];
                             } else {
                                 [torSession invalidateAndCancel];
                             }
                         }];
                         // Start GET request
-                        [sessionsTaskCaptchaGET resume];
+                        if (!self->STOP_DOWNLOAD)
+                            [sessionsTaskCaptchaGET resume];
                     }];
+                    
+                    // 10 second timeout for getSessionConfiguration
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 10 * NSEC_PER_SEC), dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void) {
+                        if (!finishedAsyncCall) {
+                            finishedAsyncCall = YES;
+                            [c resetConnection:^(BOOL success) {
+                                [self downloadPartWithId:partId resetTor:YES failed:YES];
+                            }];
+                        }
+                    });
                 }];
             });
         }

@@ -50,7 +50,18 @@
     
     NSURL *url = [[self urlTextField] getURL];
     self->page = [Page new];
-    [self->page setupForURL:url withParts:10 withCompletion:^{
+    
+    // Max download speed for free accounts / visitors -> 250 KB/s
+    const double ULOZTO_MAX_SPEED = 0.25;
+    const double BIT_TO_BYTE = 8;
+    double speedTextFieldValue = [[self speedTextField] doubleValue];
+    // Get download parts
+    int parts = ceil(speedTextFieldValue / BIT_TO_BYTE / ULOZTO_MAX_SPEED);
+    // Failsafe
+    if (parts < 1)
+        parts = 5;
+    
+    [self->page setupForURL:url withParts:parts withCompletion:^{
         [self->page setPageDelegate:self];
             
         if ([[self coreMlCheckBox] state] == NSControlStateValueOn)

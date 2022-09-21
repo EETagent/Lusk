@@ -17,6 +17,8 @@
 
 - (void)partCreated:(Part *)part;
 
+- (Part *)partGetWithId:(NSUInteger)partId;
+
 - (void)updatePartWithId:(NSUInteger)partId withStatus:(UloztoResolutionStatus)status;
 
 - (void)downloadPartWithId:(NSUInteger)partId;

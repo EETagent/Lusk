@@ -7,6 +7,9 @@
 
 typedef NS_ENUM(NSUInteger, UloztoResolutionStatus) {
     STARTING,
+    TOR_STARTING,
+    TOR_OK,
+    TOR_ERROR,
     LOADING,
     CRACKING,
     LIMIT_EXCEEDED,

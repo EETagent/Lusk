@@ -50,7 +50,7 @@
     
     NSURL *url = [[self urlTextField] getURL];
     self->page = [Page new];
-    [self->page setupForURL:url withParts:1 withCompletion:^{
+    [self->page setupForURL:url withParts:2 withCompletion:^{
         [self->page setPageDelegate:self];
             
         if ([[self coreMlCheckBox] state] == NSControlStateValueOn)
@@ -58,8 +58,10 @@
         else
             [self->page setCoreML:NO];
             
-        [self->page parseDownloadInfo];
-        [self->page initDownload];
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            [self->page parseDownloadInfo];
+            [self->page initDownload];
+        });
     }];
 }
 
@@ -95,6 +97,12 @@
     if (statusCellView) [part setStatusCellView:statusCellView];
     
     [[self downloadTable] reloadData];
+}
+
+- (Part *)partGetWithId:(NSUInteger)partId {
+    if (self->downloads && [self->downloads count] > partId)
+        return [self->downloads objectAtIndex:partId];
+    return nil;
 }
 
 - (void)updatePartWithId:(NSUInteger)partId withStatus:(UloztoResolutionStatus)status {

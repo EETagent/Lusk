@@ -57,6 +57,18 @@
             case STARTING:
                 [self setStatusAnimating:YES];
                 return @"Starting";
+            case TOR_STARTING:
+                [self setStatusAnimating:YES];
+                return @"Tor starting";
+                break;
+            case TOR_OK:
+                [self setStatusAnimating:NO];
+                return @"Tor started";
+                break;
+            case TOR_ERROR:
+                [self setStatusAnimating:NO];
+                return @"Tor failed to start";
+                break;
             case LOADING:
                 [self setStatusAnimating:YES];
                 return @"Loading";

@@ -135,7 +135,7 @@
     if ([[tableColumn identifier] isEqualTo:@"partColumn"]) {
         NSTableCellView *cellView =  [tableView makeViewWithIdentifier:@"partCell" owner:self];
         if (cellView) {
-            [[cellView textField] setIntValue:(int)row];
+            [[cellView textField] setIntValue:(int)row + 1];
             return cellView;
         }
     }

@@ -5,7 +5,7 @@ target 'Lusk' do
 
   # Pods for Lusk
   pod 'HTMLKit', '~> 4.2'
-  pod 'Tor', '~> 407.10.1'
+  pod 'Tor', '~> 407.10.2'
 
   target 'LuskTests' do
     inherit! :search_paths

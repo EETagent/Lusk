@@ -19,9 +19,11 @@
 
 @property NSURLSession *session;
 
+@property NSURL *downloadURL;
+
 @property NSUInteger partId;
 
-- (instancetype)initWithPage:(Page*)page withPart:(NSUInteger)partId;
+- (instancetype)initWithPage:(Page *)page withPart:(NSUInteger)partId withURL:(NSURL *)downloadURL;
 
 - (void)beginDownload;
 

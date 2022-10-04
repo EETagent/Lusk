@@ -306,7 +306,9 @@
                                     if (data && error == nil) {
                                         NSString *requestCaptchaPOSTResponse = [[NSString alloc] initWithData:data encoding: NSUTF8StringEncoding];
                                         
-                                        NSLog(@"%@",requestCaptchaPOSTResponse);
+                                        #ifdef DEBUG
+                                            NSLog(@"%@",requestCaptchaPOSTResponse);
+                                        #endif
                                         
                                         UloztoResolutionStatus validate = [self validateResponse:requestCaptchaPOSTResponse];
                                         
@@ -315,10 +317,31 @@
                                         [torSession invalidateAndCancel];
                                         
                                         if (validate == OK) {
+                                            HTMLDocument *downloadDocument = [HTMLDocument documentWithString:requestCaptchaPOSTResponse];
+                                            
+                                            HTMLElement *downloadAnchor = [[downloadDocument querySelectorAll:@"a"] objectAtIndex:0];
+                                            
+                                            NSString *downloadLink = [[downloadAnchor attributes] objectForKey:@"href"];
+                                            
+                                            #ifdef DEBUG
+                                                NSLog(@"%@",downloadLink);
+                                            #endif
+                                            
+                                            if (downloadLink) {
+                                                NSURL *downloadURL = [NSURL URLWithString:downloadLink];
+                                                // Initialize part on main thread
+                                                dispatch_async(dispatch_get_main_queue(), ^{
+                                                    [part updateWithStatus:DOWNLOADING];
+                                                    
+                                                    [[self pageDelegate] downloadPartWithId:partId withURL:downloadURL];
+                                                });
+                                            }
+                                            
                                             [self downloadPartWithId:partId+1 resetTor:YES failed:NO];
                                             if (![self totalSize]) {
-                                                /*NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[self slo]]];
-                                                 [request setHTTPMethod:@"HEAD"];*/
+                                          
+                                                //NSMutableURLRequest *requestCaptchaHEAD = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[self captchaURL]]]];
+                                                // [requestCaptchaHEAD setHTTPMethod:@"HEAD"];
                                             }
                                         }
                                         else if (validate == LIMIT_EXCEEDED) {
@@ -373,7 +396,7 @@
             
             [part updateWithStatus:DOWNLOADING];
             
-            [[self pageDelegate] downloadPartWithId:0];
+            [[self pageDelegate] downloadPartWithId:0 withURL:nil];
         });
         
         return;

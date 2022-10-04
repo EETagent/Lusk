@@ -15,7 +15,7 @@
 
 @property(nonatomic, weak) IBOutlet NSProgressIndicator *progressBar;
 
-- (void)beginDownloadWithPartId:(NSUInteger)partId withPageData:(Page *)page;
+- (void)beginDownloadWithPartId:(NSUInteger)partId withPageData:(Page *)page withURL:(NSURL*)downloadURL ;
 
 - (void)stopDownload;
 

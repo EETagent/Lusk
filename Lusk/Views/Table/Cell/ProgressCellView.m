@@ -13,7 +13,7 @@
     Downloader *downloader;
 }
 
-- (void)beginDownloadWithPartId:(NSUInteger)partId withPageData:(Page *)page {
+- (void)beginDownloadWithPartId:(NSUInteger)partId withPageData:(Page *)page withURL:(NSURL *)downloadURL {
     [[self progressBar] setIndeterminate:NO];
     
     // Current value = 0
@@ -21,7 +21,7 @@
     [[self progressBar] setMinValue:0];
     [[self progressBar] setMaxValue:[page totalSize] ? [page totalSize] : 1];
     
-    self->downloader = [[Downloader alloc] initWithPage:page withPart:partId];
+    self->downloader = [[Downloader alloc] initWithPage:page withPart:partId withURL:downloadURL];
 
     [downloader setDownloaderDelegate:self];
     [downloader beginDownload];

@@ -21,7 +21,7 @@
 
 - (void)updatePartWithId:(NSUInteger)partId withStatus:(UloztoResolutionStatus)status;
 
-- (void)downloadPartWithId:(NSUInteger)partId;
+- (void)downloadPartWithId:(NSUInteger)partId withURL:(NSURL *)downloadURL;
 
 - (void)partDownloadedWithId:(NSUInteger)partId;
 

@@ -14,11 +14,12 @@
 }
 
 
-- (instancetype)initWithPage:(Page*)page withPart:(NSUInteger)partId {
+- (instancetype)initWithPage:(Page *)page withPart:(NSUInteger)partId withURL:(NSURL *)downloadURL {
     self = [super init];
     if (self) {
         [self setPage:page];
         [self setPartId:partId];
+        [self setDownloadURL:downloadURL];
     }
     return self;
 }
@@ -26,7 +27,7 @@
 - (void)beginDownload {
     [self setSession:[NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:self delegateQueue:[NSOperationQueue new]]];
     
-    NSURL *finalURL = [[self page] quickDownloadURL] ? [[self page] quickDownloadURL] : [[self page] slowDownloadURL];
+    NSURL *finalURL = [[self page] quickDownloadURL] ? [[self page] quickDownloadURL] : [self downloadURL];
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:finalURL];
     
@@ -34,6 +35,7 @@
     
     // Download in different thread
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
+        NSLog(@"aaa Download started");
         if (self->downloadTask)
             [self->downloadTask resume];
     });

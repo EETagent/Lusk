@@ -123,11 +123,11 @@
     }
 }
 
-- (void)downloadPartWithId:(NSUInteger)partId {
+- (void)downloadPartWithId:(NSUInteger)partId withURL:(NSURL *)downloadURL {
     Part *part = [self->downloads objectAtIndex:partId];
     ProgressCellView *cellView = [part progressCellView];
     if (cellView)
-        [cellView beginDownloadWithPartId:partId withPageData:self->page];
+        [cellView beginDownloadWithPartId:partId withPageData:self->page withURL:downloadURL];
 }
 
 - (void)partDownloadedWithId:(NSUInteger)partId {
